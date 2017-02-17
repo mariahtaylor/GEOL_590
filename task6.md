@@ -4,15 +4,26 @@ output: html_notebook
 ---
 
 #Introduction
-The importance of being aware of **crime statistics** over the past several years is important in regards to future crime statistics. By understanding where we have been we can look for alternatives that will aid in figuring out the future. The importance of knowing crime rates will help in three ways: * Be Aware * Use Media Attention * Reduction In order to reduce crime rates in Chicago, first we need to change our outlook on the situation at hand. Being aware and knowledgable of your neighborhood and the people who live around you will allow you to take control of the situation. Making crime data available for public viewing puts the public eye right on the issue at hand. This will allow people to see where they are living and want to fix up their neighborhoods. Finally all of this will allow the reduction of crime.
+The importance of being aware of **crime statistics** over the past several years is important in regards to future crime statistics. By understanding where we have been we can look for alternatives that will aid in figuring out the future. The importance of knowing crime rates will help in three ways: 
 
-![](http://www.bostonreb.com/wp-content/uploads/2015/02/Boston-condos-for-sale-and-crime-areas.jpg)
+***
+
+1. Be Aware 
+2. Use Media Attention 
+3. Reduction 
+
+***
+
+In order to reduce crime rates in Chicago, first we need to change our outlook on the situation at hand. Being aware and knowledgable of your neighborhood and the people who live around you will allow you to take control of the situation. Making crime data available for public viewing puts the public eye right on the issue at hand. This will allow people to see where they are living and want to fix up their neighborhoods. Finally all of this will allow the reduction of crime.
+
+![](http://www.bostonreb.com/wp-content/uploads/2015/02/Boston-condos-for-sale-and-crime-areas.jpg){ width=65% }
 
 #Results
 The barplot shows the difference between the number of criminal cases each year in Chicago between 2001 and 2015. Naturally most of the data has been deleted, as my 6 year old laptop kept crashing due to the abundantly sized dataset which was too large to download.
 ```{r}
 ggplot(crimes, aes(x=Year)) + 
-  geom_bar() 
+  geom_bar() +
+  coord_flip()
 ```
 The barplot shows the difference between the number of criminal cases that led to an arrest each year in Chicago between 2001 and 2015.
 ```{r}
