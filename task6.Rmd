@@ -1,6 +1,6 @@
 ---
 title: "Crime Data in Chicago between 2001 and 2015"
-output: html_notebook
+output: md_document
 ---
 
 #Introduction
@@ -21,6 +21,9 @@ In order to reduce crime rates in Chicago, first we need to change our outlook o
 #Results
 The barplot shows the difference between the number of criminal cases each year in Chicago between 2001 and 2015. Naturally most of the data has been deleted, as my 6 year old laptop kept crashing due to the abundantly sized dataset which was too large to download.
 ```{r}
+library(tidyverse)
+library(readxl)
+crimes <- read_excel("Crimes_2001_to_present.xlsx")
 ggplot(crimes, aes(x=Year)) + 
   geom_bar() +
   coord_flip()
