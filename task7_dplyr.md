@@ -70,11 +70,10 @@ babynames <- babynames::babynames %>%
 
 #Plot frequency of top ten 2014 babynames since 1880.
 babynames::babynames %>%
-  filter(year > 1879, name == "Emma" | name == "Olivia" | name == "Noah" | name == "Sophia" | 
-           name == "Liam" | name == "Mason" | name == "Isabella" | name == "Jacob" | 
-           name == "William" | name == "Ethan") %>%
+  filter(year > 1879, name == "Emma" | name == "Olivia" | name == "Noah" | name == "Sophia" | name == "Liam" | name == "Mason" | name == "Isabella" | name == "Jacob" |  name == "William" | name == "Ethan") %>%
   ggplot(mapping = aes(x = year, y = prop, colour = name)) +
   geom_point()
+
   
 #Table 26-29th most common girls names in 1896, 1942, and 2016
 babynames::babynames %>%
