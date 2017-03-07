@@ -126,7 +126,7 @@ TASK 7: Understanding DPLYR
       spread(carrier, num_flights)
 
     ## Ten most common male and female names in 2014. 
-    babynames::babynames %>%
+    comm_2014 <- babynames::babynames %>%
       arrange(desc(n)) %>%
       filter(year == "2014") %>%
       slice(1:10) %>%
@@ -148,7 +148,8 @@ TASK 7: Understanding DPLYR
 
     #Plot frequency of top ten 2014 babynames since 1880.
     babynames::babynames %>%
-      ggplot(babynames, mapping = aes(x = year, y = prop)) +
+      filter(year > 1879, name == "Emma" | name == "Olivia" | name == "Noah" | name == "Sophia" | name == "Liam" | name == "Mason" | name == "Isabella" | name == "Jacob" | name == "William" | name == "Ethan") %>%
+      ggplot(aes(x = year, y = prop, colour = name)) +
       geom_point() %>%
       print()
 
