@@ -28,16 +28,18 @@ ggplot(crimes, aes(x=Year)) +
   geom_bar() +
   coord_flip()
 ```
+
 The barplot shows the difference between the number of criminal cases that led to an arrest each year in Chicago between 2001 and 2015.
 ```{r}
 ggplot(data = crimes) + 
   geom_bar(mapping = aes(x = Year, y = Arrest), stat = "identity")+
   coord_flip()
 ```
+
 Due to the nature of raw data and the impact that it has, a small portion of the dataset will be available for viewing below.
 
 ```{r}
-table(crimes)
+head(crimes)
 ```
 
 
