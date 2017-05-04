@@ -1,42 +1,83 @@
 ---
-title: "Functions"
-output: md_notebook
+title: "Task 08 Functions"
+author: "Mariah Taylor"
+Date: "5/2/2017"
+output: md_document
 ---
 
-
+#Function that adds WARNING messages using tryCatch
 ```{r}
+#Open necessary packages
 library (tidyverse)
 library (forcats)
 
-#Making factors for dataframe
-hantavirus <- c("ANDV", "PHV", "SNV", "BCCV")
-Geography <- c("South America", "United States", "North America", "United States")
-Reservoir <- c("Long-tailed pygmy rice rat", "Meadow vole", "Deer mouse", "Cotton rat")
-Disease_Outcome <- c("HPS", "None", "HPS", "HPS")
-
-#add factors into dataframe
-hvirus_data_sheet <- data.frame(hantavirus, Geography, Reservoir, Disease_Outcome)
-
-#view dataframe
-str(hvirus_data_sheet)
-
-#add two randomly nonsensical columns
-hvirus_data_sheet$virus_fav_chocolate <- c("dark", "milk", "eww_white", "cookie")
-hvirus_data_sheet$total_length_kb <- c(1452, 6459, 9530, 8542)
-
-#Create a function
-divideby2 <- function(data_frame_to_divide, column.to.divide, new.col) {
-  tryCatch(data_frame_to_divide$new.col <- (data_frame_to_divide$column.to.divide/2),
+#Write function that follows task 08 criteria of adding "warning" messages
+my_function <- function(df, x, y, z) {
+  tryCatch(
+    
+    df[, z] <- (df[, x] + df[, y]),
            warning=function(w){
-             message("Cannot divide words by a number")
+             message("Cannot sum words by a number")
+             return(NA) #this is not working for some reason
+             
+           },
+             error=function(e) {
+               stop("df is not a data frame") #changed error message
              })
-  return(data_frame_to_divide)
+  return(df)
 }
 
-#testfunction
-mydf<- divideby2(diamonds, cut, jewelery)
+
+diamonds <- diamonds
+
+#test function to get "warning" message
+my_function(diamonds, "cut", "depth", "new.col")
 
 
+#test my function to get "error" message
+my_function(diamonds, "cut", "clarity", "new.col2")
+
+
+#test my function to get correct dataframe column
+my_function(diamonds, "depth", "table", "new.col3")
+##this makes a new column labled "new.col3" that returns correct numerical values.
+
+
+
+```
+
+#Function that returns NA values in new column
+```{r}
+#Write function that follows task 08 criteria of adding non-numeric columns
+add_function <- function(df, x, y, z) {
+  tryCatch(df[, z] <- df[, x] + df[, y])
+           warning=function(w){
+             message("Cannot sum words by a number")
+             return(NA)
+           }
+             error=function(e) {
+               stop("x is not a numeric vector")
+             }
+  return(df)
+
+  }
+my_diamonds <- diamonds
+
+#test my function to get "warning" message
+add_function(my_diamonds, "cut", "depth", "new.col")
+##this makes a new column labeled "new.col" in the diamonds dataframe that has NA values 
+
+#test my function to get "error" message
+add_function(my_diamonds, "cut", "color", "new.col2")
+##this makes a new column labeled "new.col2" that has NA values.
+
+#test my function to get correct dataframe column
+add_function(my_diamonds, "depth", "table", "new.col3")
+##this makes a new column labled "new.col3" that returns correct numerical values.
+```
+# Loop and Performance Metric Tests
+## Create a function that uses a for loop to add the elements of a vector
+```{r}
 #For Loop: Sum of all vector elements
 library(microbenchmark)
 my_add <- function(x) {
@@ -47,7 +88,10 @@ my_add <- function(x) {
   return(sum)
 }
 
-#Comparing my sum to other function
+```
+# Compare my function to "sum" function
+```{r}
+#Comparing my addition function to the RStudio "sum" function
 test <- 1:10^4
 microbenchmark(
     my_add(test),
@@ -56,11 +100,7 @@ microbenchmark(
 
 sum(1:10^4)
 my_add(1:10^4)
-
-
-#Is there a difference? Why?
-##The sum function is much more efficient than my function because it runs in a shorter time span.
-
 ```
 
-
+#Is there a difference between the two functions? Why?
+##The sum function is much more efficient than my function because it runs in a shorter time span.
