@@ -102,5 +102,6 @@ sum(1:10^4)
 my_add(1:10^4)
 ```
 
-# Is there a difference between the two functions? Why?
-## The sum function is much more efficient than my function because it runs in a shorter time span.
+# Question
+## Is there a difference between the two functions? Why?
+The sum function is much more efficient than my function because it runs in a shorter time span.
