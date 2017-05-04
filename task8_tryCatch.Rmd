@@ -5,7 +5,7 @@ Date: "5/2/2017"
 output: md_document
 ---
 
-#Function that adds WARNING messages using tryCatch
+# Function that adds WARNING messages using tryCatch
 ```{r}
 #Open necessary packages
 library (tidyverse)
@@ -46,7 +46,7 @@ my_function(diamonds, "depth", "table", "new.col3")
 
 ```
 
-#Function that returns NA values in new column
+# Function that returns NA values in new column
 ```{r}
 #Write function that follows task 08 criteria of adding non-numeric columns
 add_function <- function(df, x, y, z) {
@@ -102,5 +102,5 @@ sum(1:10^4)
 my_add(1:10^4)
 ```
 
-#Is there a difference between the two functions? Why?
-##The sum function is much more efficient than my function because it runs in a shorter time span.
+# Is there a difference between the two functions? Why?
+## The sum function is much more efficient than my function because it runs in a shorter time span.
